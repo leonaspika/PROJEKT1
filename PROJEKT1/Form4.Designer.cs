@@ -52,17 +52,20 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(255, 192, 255);
+            button1.Font = new Font("Lucida Handwriting", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(117, 248);
             button1.Name = "button1";
-            button1.Size = new Size(220, 23);
+            button1.Size = new Size(231, 38);
             button1.TabIndex = 2;
             button1.Text = "Reset filtera";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Controls.Add(listBox1);
