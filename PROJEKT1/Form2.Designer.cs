@@ -1,4 +1,5 @@
-﻿namespace PROJEKT1
+﻿
+namespace PROJEKT1
 {
     partial class Form2
     {
@@ -47,8 +48,8 @@
             label7 = new Label();
             openFileDialog1 = new OpenFileDialog();
             pictureBox1 = new PictureBox();
-            label8 = new Label();
             button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -228,23 +229,12 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(737, 144);
+            pictureBox1.Location = new Point(498, 159);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(114, 53);
+            pictureBox1.Size = new Size(208, 182);
             pictureBox1.TabIndex = 18;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.FromArgb(192, 255, 255);
-            label8.Font = new Font("Ink Free", 9.75F, FontStyle.Bold);
-            label8.Location = new Point(512, 167);
-            label8.Name = "label8";
-            label8.Size = new Size(204, 16);
-            label8.TabIndex = 19;
-            label8.Text = "Odabir i prikaz slike životinje:";
             // 
             // button1
             // 
@@ -258,14 +248,24 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(489, 130);
+            button2.Name = "button2";
+            button2.Size = new Size(233, 23);
+            button2.TabIndex = 21;
+            button2.Text = "Odabir i prikaz slike";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 255);
             ClientSize = new Size(914, 480);
+            Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(label8);
             Controls.Add(pictureBox1);
             Controls.Add(label7);
             Controls.Add(checkBox2);
@@ -293,6 +293,11 @@
             PerformLayout();
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private Label label1;
@@ -314,7 +319,8 @@
         private Label label7;
         private OpenFileDialog openFileDialog1;
         private PictureBox pictureBox1;
-        private Label label8;
         private Button button1;
+        private EventHandler pictureBox1_DoubleClick;
+        private Button button2;
     }
 }

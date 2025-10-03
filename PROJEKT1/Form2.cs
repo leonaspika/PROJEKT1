@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,38 +33,49 @@ namespace PROJEKT1
             {
                 spol = "Nije odabrano";
             }
-            string cijepljen; 
+            string cijepljen;
             if (checkBox1.Checked)
             {
                 cijepljen = "Cijepljen";
             }
             else
             {
-               cijepljen = "Nije cijepljen";
+                cijepljen = "Nije cijepljen";
             }
-            string kastriran; 
+            string kastriran;
             if (checkBox2.Checked)
             {
                 kastriran = "Kastriran ";
             }
             else
             { kastriran = "Nije kastriran"; }
-            string zapis=textBox1.Text + " | " + textBox2+ " | " +textBox3+ " | " + " | " + spol + " | " + numericUpDown1+ " | " + dateTimePicker1+" | " + cijepljen + "| " + kastriran; 
-            Admin.UnosUdatoteku(zapis); 
+            string zapis = textBox1.Text + " | " + textBox2 + " | " + textBox3 + " | " + " | " + spol + " | " + numericUpDown1 + " | " + dateTimePicker1 + " | " + cijepljen + "| " + kastriran;
+            Admin.UnosUdatoteku(zapis);
             MessageBox.Show("Uspjesno ste unijeli ljubimca u bazu podataka");
+           
             textBox1.Clear();
             textBox2.Clear();
-            textBox3.Clear();   
+            textBox3.Clear();
             radioButton1.Checked = false;
             radioButton2.Checked = false;
             checkBox1.Checked = false;
             checkBox2.Checked = false;
             numericUpDown1.Value = 0;
             dateTimePicker1.Value = DateTime.Now;
-        }   
-        private void pictureBox1_Click(object sender, EventArgs e)
-                {
+        }
 
-                }
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = openFileDialog1.FileName;
+            }
+        }
     }
 }
+
