@@ -19,12 +19,51 @@ namespace PROJEKT1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
+            string spol;
+            if (radioButton1.Checked)
+            {
+                spol = "Musko";
+            }
+            else if (radioButton2.Checked)
+            {
+                spol = "Zensko";
+            }
+            else
+            {
+                spol = "Nije odabrano";
+            }
+            string cijepljen; 
+            if (checkBox1.Checked)
+            {
+                cijepljen = "Cijepljen";
+            }
+            else
+            {
+               cijepljen = "Nije cijepljen";
+            }
+            string kastriran; 
+            if (checkBox2.Checked)
+            {
+                kastriran = "Kastriran ";
+            }
+            else
+            { kastriran = "Nije kastriran"; }
+            string zapis=textBox1.Text + " | " + textBox2+ " | " +textBox3+ " | " + " | " + spol + " | " + numericUpDown1+ " | " + dateTimePicker1+" | " + cijepljen + "| " + kastriran; 
+            Admin.UnosUdatoteku(zapis); 
+            MessageBox.Show("Uspjesno ste unijeli ljubimca u bazu podataka");
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();   
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            numericUpDown1.Value = 0;
+            dateTimePicker1.Value = DateTime.Now;
+        }   
         private void pictureBox1_Click(object sender, EventArgs e)
-        {
+                {
 
-        }
+                }
     }
 }

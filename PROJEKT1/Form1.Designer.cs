@@ -42,7 +42,7 @@
             button1.BackColor = Color.FromArgb(128, 255, 255);
             button1.Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold);
             button1.Location = new Point(284, 64);
-            button1.Margin = new Padding(5, 5, 5, 5);
+            button1.Margin = new Padding(5);
             button1.Name = "button1";
             button1.Size = new Size(537, 63);
             button1.TabIndex = 0;
@@ -55,55 +55,59 @@
             button3.BackColor = Color.FromArgb(255, 255, 192);
             button3.Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold);
             button3.Location = new Point(284, 217);
-            button3.Margin = new Padding(5, 5, 5, 5);
+            button3.Margin = new Padding(5);
             button3.Name = "button3";
             button3.Size = new Size(537, 69);
             button3.TabIndex = 2;
             button3.Text = "Filtriranje";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
             button4.BackColor = Color.FromArgb(192, 192, 255);
             button4.Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold);
             button4.Location = new Point(284, 296);
-            button4.Margin = new Padding(5, 5, 5, 5);
+            button4.Margin = new Padding(5);
             button4.Name = "button4";
             button4.Size = new Size(537, 59);
             button4.TabIndex = 3;
             button4.Text = "Udomljavanje";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
             button5.BackColor = Color.FromArgb(255, 192, 192);
             button5.Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold);
             button5.Location = new Point(284, 365);
-            button5.Margin = new Padding(5, 5, 5, 5);
+            button5.Margin = new Padding(5);
             button5.Name = "button5";
             button5.Size = new Size(537, 61);
             button5.TabIndex = 4;
             button5.Text = "Statistika";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
             button6.BackColor = Color.FromArgb(224, 224, 224);
             button6.Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold);
             button6.Location = new Point(376, 463);
-            button6.Margin = new Padding(5, 5, 5, 5);
+            button6.Margin = new Padding(5);
             button6.Name = "button6";
             button6.Size = new Size(352, 41);
             button6.TabIndex = 5;
             button6.Text = "Izlaz";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button7
             // 
             button7.BackColor = Color.FromArgb(255, 192, 255);
             button7.Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold);
             button7.Location = new Point(284, 139);
-            button7.Margin = new Padding(5, 5, 5, 5);
+            button7.Margin = new Padding(5);
             button7.Name = "button7";
             button7.Size = new Size(537, 68);
             button7.TabIndex = 1;
@@ -124,7 +128,7 @@
             Controls.Add(button7);
             Controls.Add(button1);
             Font = new Font("Kristen ITC", 14.25F, FontStyle.Bold);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
