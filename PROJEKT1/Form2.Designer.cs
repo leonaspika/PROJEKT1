@@ -322,5 +322,17 @@ namespace PROJEKT1
         private Button button1;
         private EventHandler pictureBox1_DoubleClick;
         private Button button2;
+        public Form2(string imagePath)
+{
+    InitializeComponent();
+    if (File.Exists(imagePath))
+    {
+        pictureBox1.Image = Image.FromFile(imagePath);
+    }
+    else
+    {
+        pictureBox1.Image = null;
+    }
+}
     }
 }

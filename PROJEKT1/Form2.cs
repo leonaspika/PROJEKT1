@@ -52,7 +52,9 @@ namespace PROJEKT1
             string zapis = textBox1.Text + " | " + textBox2 + " | " + textBox3 + " | " + " | " + spol + " | " + numericUpDown1 + " | " + dateTimePicker1 + " | " + cijepljen + "| " + kastriran;
             Admin.UnosUdatoteku(zapis);
             MessageBox.Show("Uspjesno ste unijeli ljubimca u bazu podataka");
-           
+            File.AppendAllText("zivotinje.txt", zapis + Environment.NewLine);
+
+        
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
@@ -71,10 +73,7 @@ namespace PROJEKT1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.ImageLocation = openFileDialog1.FileName;
-            }
+         
         }
     }
 }

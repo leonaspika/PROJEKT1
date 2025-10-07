@@ -37,7 +37,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(87, 107);
+            listBox1.Location = new Point(94, 107);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(290, 229);
             listBox1.TabIndex = 0;
@@ -50,6 +50,7 @@
             pictureBox1.Size = new Size(213, 229);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Form3
             // 
