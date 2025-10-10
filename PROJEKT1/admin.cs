@@ -9,25 +9,32 @@ namespace PROJEKT1
 {
     public class Admin
     {
+
         public static void UnosUdatoteku(string zapis)
         {
-            StreamWriter sw=new StreamWriter("zivotinje.txt");
-            sw.WriteLine(zapis);
-            sw.Close();
-            
+            // ensure file exists and append line
+            using (StreamWriter sw = new StreamWriter("zivotinje.txt", true))
+            {
+                sw.WriteLine(zapis);
+            }
         }
+
         public static List<string> Svi()
         {
-            List<string> lista = new List<string>();
-            StreamReader sr = new StreamReader("zivotinje.txt");
-            string linija=sr.ReadLine();
-           while(linija != null)
+            var lista = new List<string>();
+            if (!File.Exists("zivotinje.txt"))
+                return lista;
+
+            using (StreamReader sr = new StreamReader("zivotinje.txt"))
             {
-                linija=linija.Replace("|", " ");
-                lista.Add(linija);
-                linija=sr.ReadLine();
+                string linija = sr.ReadLine();
+                while (linija != null)
+                {
+                    // keep raw line with '|' separators so Form3 can parse fields (including saved image filename)
+                    lista.Add(linija);
+                    linija = sr.ReadLine();
+                }
             }
-            sr.Close();
             return lista;
         }
     }

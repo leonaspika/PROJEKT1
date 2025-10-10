@@ -19,57 +19,18 @@ namespace PROJEKT1
             public string ImagePath { get; set; }
             public override string ToString() => DisplayText;
         }
-      
+
 
         public Form3()
         {
             InitializeComponent();
-            LoadRecords();
+            this.Load += Form3_Load;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            
         }
+        
 
-        private void LoadRecords()
-        {
-            string filePath = "zivotinje.txt";
-            listBox1.Items.Clear();
-
-            if (File.Exists(filePath))
-            {
-                string[] lines = File.ReadAllLines(filePath);
-                foreach (string line in lines)
-                {
-                    var parts = line.Split('|');
-                    if (parts.Length >= 8) // prilagodi broj prema stvarnom broju polja
-                    {
-                        // Prilagodi redoslijed i nazive prema stvarnim podacima!
-                        string displayText =
-                            $"Ime: {parts[0].Trim()}  " +
-                            $"Pasmina: {parts[1].Trim()}  " +
-                            $"Vrsta: {parts[2].Trim()}  " +
-                            $"Spol: {parts[3].Trim()}  " +
-                            $"Dob: {parts[4].Trim()}  " +
-                            $"Datum: {parts[5].Trim()}  " +
-                            $"Cijepljen: {parts[6].Trim()}  " +
-                            $"Kastriran: {parts[7].Trim()}";
-                        var record = new AnimalRecord
-                        {
-                            DisplayText = displayText,
-                            ImagePath = parts.Length > 8 ? parts[8].Trim() : ""
-                        };
-                        listBox1.Items.Add(record);
-                    }
-                    else
-                    {
-                        listBox1.Items.Add(line.Replace("|", " "));
-                    }
-                }
-            }
-            else
-            {
-                listBox1.Items.Add("Nema zapisa.");
-            }
-        }
-            private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem is AnimalRecord record && !string.IsNullOrWhiteSpace(record.ImagePath))
             {
@@ -77,33 +38,108 @@ namespace PROJEKT1
                 {
                     if (File.Exists(record.ImagePath))
                     {
-                        pictureBox1.Image = Image.FromFile(record.ImagePath);
+                        // load into a copy to avoid locking the file
+                        using (var fs = File.OpenRead(record.ImagePath))
+                        using (var img = Image.FromStream(fs))
+                        {
+                            if (pictureBox1.Image != null)
+                            {
+                                pictureBox1.Image.Dispose();
+                                pictureBox1.Image = null;
+                            }
+
+                            pictureBox1.Image = new Bitmap(img);
+                            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                        }
                     }
                     else
                     {
-                        pictureBox1.Image = null;
+                        if (pictureBox1.Image != null)
+                        {
+                            pictureBox1.Image.Dispose();
+                            pictureBox1.Image = null;
+                        }
                     }
                 }
                 catch
                 {
-                    pictureBox1.Image = null;
+                    if (pictureBox1.Image != null)
+                    {
+                        pictureBox1.Image.Dispose();
+                        pictureBox1.Image = null;
+                    }
                 }
             }
             else
             {
-                pictureBox1.Image = null;
+                if (pictureBox1.Image != null)
+                {
+                    pictureBox1.Image.Dispose();
+                    pictureBox1.Image = null;
+                }
             }
 
-        } 
-    
+        }
 
-  
+
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            var lines = Admin.Svi(); // raw lines with '|' separators
+            var records = new List<AnimalRecord>();
+
+            foreach (var line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                var parts = line.Split('|').Select(p => p.Trim()).ToArray();
+                if (parts.Length == 0)
+                    continue;
+
+                string imageFileName = string.Empty;
+                string displayText;
+
+                if (parts.Length == 1)
+                {
+                    displayText = parts[0];
+                }
+                else
+                {
+                    // assume last part is image filename if present
+                    imageFileName = parts[^1];
+                    displayText = string.Join(" | ", parts.Take(parts.Length - 1));
+                }
+
+                string imagePath = null;
+                if (!string.IsNullOrWhiteSpace(imageFileName))
+                {
+                    // images saved to application's startup folder by Form2
+                    var candidate = Path.Combine(Application.StartupPath, imageFileName);
+                    if (File.Exists(candidate))
+                    {
+                        imagePath = candidate;
+                    }
+                    else if (File.Exists(imageFileName))
+                    {
+                        // fallback if full path was somehow stored
+                        imagePath = imageFileName;
+                    }
+                }
+
+                records.Add(new AnimalRecord { DisplayText = displayText, ImagePath = imagePath });
+            }
+
+            listBox1.DataSource = records;
+        }
     }
 }
+    
 
 
 
