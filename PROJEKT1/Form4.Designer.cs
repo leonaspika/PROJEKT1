@@ -36,6 +36,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "vrsta", "kastriran", "cijepljen" });
             comboBox1.Location = new Point(117, 88);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
@@ -49,6 +50,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(120, 94);
             listBox1.TabIndex = 1;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // button1
             // 
