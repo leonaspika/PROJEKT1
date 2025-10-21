@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PROJEKT1
 {
@@ -19,7 +14,9 @@ namespace PROJEKT1
         // mapping from displayed ListBox index -> index in allLines
         private List<int> displayedIndexes = new List<int>();
 
-        private TextBox textBoxKontakt => textBox2;
+        // map a semantic name to the textbox that holds contact info
+        // use the textbox name that exists in the Designer (textBox1 is used elsewhere in this class)
+        private TextBox textBoxKontakt => textBox1;
 
         public Form5()
         {
@@ -27,10 +24,7 @@ namespace PROJEKT1
             LoadRecords();
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             button1.Click += button1_Click;
-
         }
-
-
 
         private void LoadRecords()
         {
@@ -46,15 +40,18 @@ namespace PROJEKT1
 
                 for (int i = 0; i < allLines.Count; i++)
                 {
-                    string line = allLines[i];
+                    string line = allLines[i] ?? string.Empty;
                     var fields = line.Split('|');
                     string napomena = fields.Length > 8 ? (fields[8] ?? string.Empty) : string.Empty;
 
                     // skip records that contain "udomljen" in napomena (case-insensitive)
-                    if (napomena.IndexOf("udomljen", StringComparison.OrdinalIgnoreCase) >= 0)
+                    if (!string.IsNullOrEmpty(napomena) &&
+                        napomena.IndexOf("udomljen", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
                         continue;
+                    }
 
-                    // display non-adopted records
+                    // display non-adopted records (take up to first 9 fields)
                     string formattedLine = string.Join(", ", line.Split('|').Take(9));
                     listBox1.Items.Add(formattedLine);
 
@@ -70,7 +67,8 @@ namespace PROJEKT1
                 listBox1.Items.Add("Nema zapisa.");
             }
         }
-        private void button1_Click(object? sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             int displayedIdx = listBox1.SelectedIndex;
             if (displayedIdx < 0 || displayedIdx >= displayedIndexes.Count)
@@ -80,8 +78,8 @@ namespace PROJEKT1
             }
 
             string datumUdomljavanja = dateTimePicker1.Value.Date.ToString("dd.MM.yyyy");
-            string udomitelj = textBox1.Text.Trim();
-            string kontakt = textBoxKontakt?.Text.Trim() ?? string.Empty;
+            string udomitelj = (textBox1?.Text ?? string.Empty).Trim();
+            string kontakt = (textBoxKontakt?.Text ?? string.Empty).Trim();
 
             if (string.IsNullOrWhiteSpace(udomitelj))
             {
@@ -94,9 +92,11 @@ namespace PROJEKT1
             var fields = allLines[realIndex].Split('|').ToList();
             while (fields.Count < 10)
                 fields.Add(string.Empty);
+
             string napomena = fields[8] ?? string.Empty;
 
-            if (napomena.IndexOf("udomljen", StringComparison.OrdinalIgnoreCase) >= 0)
+            if (!string.IsNullOrEmpty(napomena) &&
+                napomena.IndexOf("udomljen", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 var res = MessageBox.Show("Ova životinja izgleda već označena kao udomljena. Želite li ipak nastaviti i ažurirati podatke udomljavanja?", "Potvrda", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.No)
@@ -129,31 +129,35 @@ namespace PROJEKT1
 
             try
             {
-                string logLine = $"{fields[0]}|{fields[1]}|DatumUdomljavanja:{datumUdomljavanja}|Udomitelj:{udomitelj}|Kontakt:{kontakt}";
+                string logLine = $"{fields.ElementAtOrDefault(0)}|{fields.ElementAtOrDefault(1)}|DatumUdomljavanja:{datumUdomljavanja}|Udomitelj:{udomitelj}|Kontakt:{kontakt}";
                 File.AppendAllText("udomljavanja.txt", logLine + Environment.NewLine);
             }
             catch
             {
-                // non-fatal; continue
+                // non-fatal; ignore logging failure
             }
 
             // remove from displayed list because now it's adopted
-            listBox1.Items.RemoveAt(displayedIdx);
-            displayedIndexes.RemoveAt(displayedIdx);
+            if (displayedIdx >= 0 && displayedIdx < listBox1.Items.Count)
+            {
+                listBox1.Items.RemoveAt(displayedIdx);
+                displayedIndexes.RemoveAt(displayedIdx);
+            }
 
             if (listBox1.Items.Count == 0)
                 listBox1.Items.Add("Nema dostupnih (neudomljenih) zapisa.");
 
             MessageBox.Show("Podaci spremljeni. Životinja je označena kao udomljena.", "Uspjeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         private void label1_Click(object sender, EventArgs e)
         {
-
+            // intentionally left blank (designer event handler)
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // optionally handle selection changes here
         }
     }
 }
