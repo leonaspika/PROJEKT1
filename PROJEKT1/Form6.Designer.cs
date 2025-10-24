@@ -28,125 +28,126 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form6));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            label5 = new Label();
             label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.ActiveCaption;
-            label1.Font = new Font("Lucida Console", 12F);
-            label1.ForeColor = Color.FromArgb(255, 192, 192);
-            label1.Location = new Point(40, 106);
+            label1.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
+            label1.Location = new Point(70, 66);
             label1.Name = "label1";
-            label1.Size = new Size(237, 16);
+            label1.Size = new Size(188, 20);
             label1.TabIndex = 0;
-            label1.Text = "Broj ukupnih životinja:";
+            label1.Text = "broj ukupnih životinja:";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = SystemColors.ActiveCaption;
-            label2.Font = new Font("Lucida Console", 12F);
-            label2.ForeColor = Color.FromArgb(255, 192, 192);
-            label2.Location = new Point(40, 154);
+            label2.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(70, 112);
             label2.Name = "label2";
-            label2.Size = new Size(247, 16);
+            label2.Size = new Size(192, 20);
             label2.TabIndex = 1;
-            label2.Text = "Broj trenutno prisutnih:";
+            label2.Text = "broj trenutno prisutnih:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = SystemColors.ActiveCaption;
-            label3.Font = new Font("Lucida Console", 12F);
-            label3.ForeColor = Color.FromArgb(255, 192, 192);
-            label3.Location = new Point(40, 209);
+            label3.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
+            label3.Location = new Point(70, 159);
             label3.Name = "label3";
-            label3.Size = new Size(167, 16);
+            label3.Size = new Size(134, 20);
             label3.TabIndex = 2;
-            label3.Text = "Broj udomljenih:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(323, 104);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 5;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(323, 202);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 6;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(323, 152);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 7;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(323, 244);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 8;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(323, 291);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
-            textBox5.TabIndex = 9;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = SystemColors.ActiveCaption;
-            label5.Font = new Font("Lucida Console", 12F);
-            label5.ForeColor = Color.FromArgb(255, 192, 192);
-            label5.Location = new Point(40, 298);
-            label5.Name = "label5";
-            label5.Size = new Size(267, 16);
-            label5.TabIndex = 4;
-            label5.Text = "Broj životinja po vrstama:";
-            label5.Click += label5_Click;
+            label3.Text = "broj udomljenih:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.BackColor = SystemColors.ActiveCaption;
-            label4.Font = new Font("Lucida Console", 12F);
-            label4.ForeColor = Color.FromArgb(255, 192, 192);
-            label4.Location = new Point(40, 251);
+            label4.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
+            label4.Location = new Point(70, 204);
             label4.Name = "label4";
-            label4.Size = new Size(147, 16);
+            label4.Size = new Size(117, 20);
             label4.TabIndex = 3;
-            label4.Text = "Prosječna dob:";
+            label4.Text = "prosječna dob:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
+            label5.Location = new Point(70, 254);
+            label5.Name = "label5";
+            label5.Size = new Size(208, 20);
+            label5.TabIndex = 4;
+            label5.Text = "broj životinja po vrstama:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(345, 68);
+            label6.Name = "label6";
+            label6.Size = new Size(38, 15);
+            label6.TabIndex = 5;
+            label6.Text = "label6";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(345, 117);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 6;
+            label7.Text = "label7";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(345, 164);
+            label8.Name = "label8";
+            label8.Size = new Size(38, 15);
+            label8.TabIndex = 7;
+            label8.Text = "label8";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(345, 209);
+            label9.Name = "label9";
+            label9.Size = new Size(38, 15);
+            label9.TabIndex = 8;
+            label9.Text = "label9";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(339, 259);
+            label10.Name = "label10";
+            label10.Size = new Size(44, 15);
+            label10.TabIndex = 9;
+            label10.Text = "label10";
             // 
             // Form6
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -163,12 +164,12 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Label label5;
         private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
     }
 }
