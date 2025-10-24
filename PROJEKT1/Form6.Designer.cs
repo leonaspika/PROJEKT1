@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form6));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -44,6 +43,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(255, 255, 192);
             label1.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
             label1.Location = new Point(70, 66);
             label1.Name = "label1";
@@ -55,6 +55,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.FromArgb(192, 192, 255);
             label2.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(70, 112);
             label2.Name = "label2";
@@ -65,6 +66,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(255, 192, 255);
             label3.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
             label3.Location = new Point(70, 159);
             label3.Name = "label3";
@@ -75,6 +77,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.FromArgb(255, 224, 192);
             label4.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
             label4.Location = new Point(70, 204);
             label4.Name = "label4";
@@ -85,6 +88,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.FromArgb(192, 255, 192);
             label5.Font = new Font("Bradley Hand ITC", 12F, FontStyle.Bold);
             label5.Location = new Point(70, 254);
             label5.Name = "label5";
@@ -141,8 +145,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            BackColor = Color.FromArgb(192, 255, 255);
+            ClientSize = new Size(596, 364);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);

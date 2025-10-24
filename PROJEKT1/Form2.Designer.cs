@@ -50,7 +50,6 @@ namespace PROJEKT1
             pictureBox1 = new PictureBox();
             button1 = new Button();
             button2 = new Button();
-            textBox4 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -259,20 +258,12 @@ namespace PROJEKT1
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(750, 127);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(114, 24);
-            textBox4.TabIndex = 22;
-            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 255);
             ClientSize = new Size(914, 480);
-            Controls.Add(textBox4);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
@@ -343,6 +334,5 @@ namespace PROJEKT1
         pictureBox1.Image = null;
     }
         }
-        private TextBox textBox4;
     }
 }

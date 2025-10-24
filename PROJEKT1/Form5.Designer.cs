@@ -34,7 +34,6 @@
             textBox1 = new TextBox();
             label2 = new Label();
             button1 = new Button();
-            textBox2 = new TextBox();
             SuspendLayout();
             // 
             // listBox1
@@ -92,20 +91,12 @@
             button1.Text = "Udomi";
             button1.UseVisualStyleBackColor = true;
             // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(636, 347);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 7;
-            // 
             // Form5
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 255, 192);
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox2);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(textBox1);
@@ -126,6 +117,5 @@
         private TextBox textBox1;
         private Label label2;
         private Button button1;
-        private TextBox textBox2;
     }
 }
